@@ -18,7 +18,12 @@ namespace System.Windows.Forms
         #region Public Methods
 
         public SelectDirectoryDialog() :
-            base(Win32Api.FILEOPENDIALOGOPTIONS.FOS_PICKFOLDERS)
+            this(false)
+        {
+        }
+
+        public SelectDirectoryDialog(bool reusable) :
+            base(Win32Api.FILEOPENDIALOGOPTIONS.FOS_PICKFOLDERS, reusable)
         {
         }
 

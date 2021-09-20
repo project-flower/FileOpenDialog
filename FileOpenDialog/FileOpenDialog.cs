@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using Win32Api;
 
 namespace System.Windows.Forms
@@ -8,6 +10,8 @@ namespace System.Windows.Forms
         #region Private Fields
 
         private IFileOpenDialog dialog;
+        private readonly FILEOPENDIALOGOPTIONS options;
+        private readonly bool reusable;
 
         #endregion
 
@@ -22,15 +26,20 @@ namespace System.Windows.Forms
 
         #region Public Methods
 
-        public FileOpenDialog(FILEOPENDIALOGOPTIONS options)
+        public FileOpenDialog(FILEOPENDIALOGOPTIONS options, bool reusable)
         {
-            dialog = new Win32Api.FileOpenDialog() as IFileOpenDialog;
-            dialog.SetOptions(options | FILEOPENDIALOGOPTIONS.FOS_FORCEFILESYSTEM);
+            this.options = options;
+            this.reusable = reusable;
+
+            if (reusable)
+            {
+                GenerateDialog();
+            }
         }
 
         public new void Dispose()
         {
-            Marshal.ReleaseComObject(dialog);
+            ReleaseDialog();
             base.Dispose();
         }
 
@@ -45,36 +54,70 @@ namespace System.Windows.Forms
 
         protected override bool RunDialog(IntPtr hwndOwner)
         {
-            IShellItem item;
-
-            if (!string.IsNullOrEmpty(DisplayName))
+            if (!reusable)
             {
-                IntPtr pidl;
-                uint rgfInOut = 0;
+                GenerateDialog();
+            }
 
-                if (Shell32.SHILCreateFromPath(DisplayName, out pidl, ref rgfInOut) == 0)
+            try
+            {
+                IShellItem item;
+
+                if (!string.IsNullOrEmpty(DisplayName))
                 {
-                    if (Shell32.SHCreateShellItem(IntPtr.Zero, IntPtr.Zero, pidl, out item) == 0)
-                    {
-                        dialog.SetFolder(item);
-                    }
+                    IntPtr pidl;
+                    uint rgfInOut = 0;
 
-                    Marshal.FreeCoTaskMem(pidl);
+                    if (Shell32.SHILCreateFromPath(DisplayName, out pidl, ref rgfInOut) == 0)
+                    {
+                        if (Shell32.SHCreateShellItem(IntPtr.Zero, IntPtr.Zero, pidl, out item) == 0)
+                        {
+                            dialog.SetFolder(item);
+                        }
+
+                        Marshal.FreeCoTaskMem(pidl);
+                    }
+                }
+
+                uint result = dialog.Show(hwndOwner);
+
+                if (result != 0)
+                {
+                    return false;
+                }
+
+                dialog.GetResult(out item);
+                string directoryName;
+                item.GetDisplayName(SIGDN.SIGDN_FILESYSPATH, out directoryName);
+                DisplayName = directoryName;
+                return true;
+            }
+            finally
+            {
+                if (!reusable)
+                {
+                    ReleaseDialog();
                 }
             }
+        }
 
-            uint result = dialog.Show(hwndOwner);
+        #endregion
 
-            if (result != 0)
+        #region Private Methods
+
+        private void GenerateDialog()
+        {
+            dialog = new Win32Api.FileOpenDialog() as IFileOpenDialog;
+            dialog.SetOptions(options | FILEOPENDIALOGOPTIONS.FOS_FORCEFILESYSTEM);
+        }
+
+        private void ReleaseDialog()
+        {
+            if (dialog != null)
             {
-                return false;
+                Marshal.ReleaseComObject(dialog);
+                dialog = null;
             }
-
-            dialog.GetResult(out item);
-            string directoryName;
-            item.GetDisplayName(SIGDN.SIGDN_FILESYSPATH, out directoryName);
-            DisplayName = directoryName;
-            return true;
         }
 
         #endregion

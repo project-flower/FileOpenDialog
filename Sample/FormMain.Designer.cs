@@ -31,8 +31,9 @@ namespace Sample
         {
             this.labelDirectoryName = new System.Windows.Forms.Label();
             this.textBoxDirectoryName = new System.Windows.Forms.TextBox();
-            this.buttonSelect = new System.Windows.Forms.Button();
-            this.selectDirectoryDialog = new SelectDirectoryDialog();
+            this.buttonSelect1 = new System.Windows.Forms.Button();
+            this.buttonSelect2 = new System.Windows.Forms.Button();
+            this.selectDirectoryDialog1 = new SelectDirectoryDialog();
             this.SuspendLayout();
             // 
             // labelDirectoryName
@@ -51,27 +52,39 @@ namespace Sample
             this.textBoxDirectoryName.Size = new System.Drawing.Size(687, 19);
             this.textBoxDirectoryName.TabIndex = 1;
             // 
-            // buttonSelect
+            // buttonSelect1
             // 
-            this.buttonSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSelect.Location = new System.Drawing.Point(713, 37);
-            this.buttonSelect.Name = "buttonSelect";
-            this.buttonSelect.Size = new System.Drawing.Size(75, 23);
-            this.buttonSelect.TabIndex = 2;
-            this.buttonSelect.Text = "&Select";
-            this.buttonSelect.UseVisualStyleBackColor = true;
-            this.buttonSelect.Click += new System.EventHandler(this.buttonSelect_Click);
+            this.buttonSelect1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSelect1.Location = new System.Drawing.Point(632, 37);
+            this.buttonSelect1.Name = "buttonSelect1";
+            this.buttonSelect1.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelect1.TabIndex = 2;
+            this.buttonSelect1.Text = "Select (&1)";
+            this.buttonSelect1.UseVisualStyleBackColor = true;
+            this.buttonSelect1.Click += new System.EventHandler(this.buttonSelect1_Click);
             // 
-            // selectDirectoryDialog
+            // buttonSelect2
             // 
-            this.selectDirectoryDialog.DirectoryName = null;
+            this.buttonSelect2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSelect2.Location = new System.Drawing.Point(713, 37);
+            this.buttonSelect2.Name = "buttonSelect2";
+            this.buttonSelect2.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelect2.TabIndex = 3;
+            this.buttonSelect2.Text = "Select (&2)";
+            this.buttonSelect2.UseVisualStyleBackColor = true;
+            this.buttonSelect2.Click += new System.EventHandler(this.buttonSelect2_Click);
+            // 
+            // selectDirectoryDialog1
+            // 
+            this.selectDirectoryDialog1.DirectoryName = null;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 72);
-            this.Controls.Add(this.buttonSelect);
+            this.Controls.Add(this.buttonSelect2);
+            this.Controls.Add(this.buttonSelect1);
             this.Controls.Add(this.textBoxDirectoryName);
             this.Controls.Add(this.labelDirectoryName);
             this.Name = "FormMain";
@@ -85,8 +98,9 @@ namespace Sample
         #endregion
         private System.Windows.Forms.Label labelDirectoryName;
         private System.Windows.Forms.TextBox textBoxDirectoryName;
-        private System.Windows.Forms.Button buttonSelect;
-        private SelectDirectoryDialog selectDirectoryDialog;
+        private System.Windows.Forms.Button buttonSelect1;
+        private System.Windows.Forms.Button buttonSelect2;
+        private SelectDirectoryDialog selectDirectoryDialog1;
     }
 }
 
