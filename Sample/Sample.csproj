@@ -48,26 +48,24 @@
   <ItemGroup>
     <Compile Include="..\FileOpenDialog\FileOpenDialog.cs">
       <Link>FileOpenDialog.cs</Link>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="..\FileOpenDialog\SelectDirectoryDialog.cs">
       <Link>SelectDirectoryDialog.cs</Link>
-      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="..\FileOpenDialog\Win32Api\Shell32.cs">
-      <Link>Win32Api\Shell32.cs</Link>
+    <Compile Include="..\FileOpenDialog\NativeMethods\Shell32.cs">
+      <Link>NativeMethods\Shell32.cs</Link>
     </Compile>
-    <Compile Include="..\FileOpenDialog\Win32Api\ShlObjIdl_Core.h.cs">
-      <Link>Win32Api\ShlObjIdl_Core.h.cs</Link>
+    <Compile Include="..\FileOpenDialog\NativeMethods\ShlObjIdl_Core.h.cs">
+      <Link>NativeMethods\ShlObjIdl_Core.h.cs</Link>
     </Compile>
-    <Compile Include="..\FileOpenDialog\Win32Api\ShlObj_Core.h.cs">
-      <Link>Win32Api\ShlObj_Core.h.cs</Link>
+    <Compile Include="..\FileOpenDialog\NativeMethods\ShlObj_Core.h.cs">
+      <Link>NativeMethods\ShlObj_Core.h.cs</Link>
     </Compile>
-    <Compile Include="..\FileOpenDialog\Win32Api\User32.cs">
-      <Link>Win32Api\User32.cs</Link>
+    <Compile Include="..\FileOpenDialog\NativeMethods\User32.cs">
+      <Link>NativeMethods\User32.cs</Link>
     </Compile>
-    <Compile Include="..\FileOpenDialog\Win32Api\WinUser.h.cs">
-      <Link>Win32Api\WinUser.h.cs</Link>
+    <Compile Include="..\FileOpenDialog\NativeMethods\WinUser.h.cs">
+      <Link>NativeMethods\WinUser.h.cs</Link>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>

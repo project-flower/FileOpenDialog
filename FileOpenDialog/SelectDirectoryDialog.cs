@@ -2,6 +2,7 @@
 
 namespace System.Windows.Forms
 {
+    [DesignerCategory("Code")]
     public class SelectDirectoryDialog : FileOpenDialog
     {
         #region Public Properties
@@ -23,7 +24,7 @@ namespace System.Windows.Forms
         }
 
         public SelectDirectoryDialog(bool reusable) :
-            base(Win32Api.FILEOPENDIALOGOPTIONS.FOS_PICKFOLDERS, reusable)
+            base(NativeMethods.FILEOPENDIALOGOPTIONS.FOS_PICKFOLDERS, reusable)
         {
         }
 

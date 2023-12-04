@@ -1,10 +1,10 @@
-﻿using System;
+﻿using NativeMethods;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using Win32Api;
 
 namespace System.Windows.Forms
 {
+    [DesignerCategory("Code")]
     public abstract class FileOpenDialog : CommonDialog
     {
         #region Private Fields
@@ -113,7 +113,7 @@ namespace System.Windows.Forms
 
         private void GenerateDialog()
         {
-            dialog = new Win32Api.FileOpenDialog() as IFileOpenDialog;
+            dialog = new NativeMethods.FileOpenDialog() as IFileOpenDialog;
             dialog.SetOptions(options | FILEOPENDIALOGOPTIONS.FOS_FORCEFILESYSTEM);
         }
 

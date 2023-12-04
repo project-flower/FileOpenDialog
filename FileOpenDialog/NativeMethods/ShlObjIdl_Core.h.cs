@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Win32Api
+namespace NativeMethods
 {
     #region Public Classes
 
