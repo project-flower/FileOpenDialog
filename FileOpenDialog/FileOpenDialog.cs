@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 namespace System.Windows.Forms
 {
     [DesignerCategory("Code")]
-    public abstract class FileOpenDialog : CommonDialog
+    public abstract partial class FileOpenDialog : CommonDialog
     {
         #region Private Fields
 
         private IFileOpenDialog dialog;
-        private readonly FILEOPENDIALOGOPTIONS options;
+        private readonly FileOpenDialogOptions options;
         private readonly bool reusable;
 
         #endregion
@@ -26,7 +26,7 @@ namespace System.Windows.Forms
 
         #region Public Methods
 
-        public FileOpenDialog(FILEOPENDIALOGOPTIONS options, bool reusable)
+        public FileOpenDialog(FileOpenDialogOptions options, bool reusable)
         {
             this.options = options;
             this.reusable = reusable;
@@ -114,7 +114,7 @@ namespace System.Windows.Forms
         private void GenerateDialog()
         {
             dialog = new NativeMethods.FileOpenDialog() as IFileOpenDialog;
-            dialog.SetOptions(options | FILEOPENDIALOGOPTIONS.FOS_FORCEFILESYSTEM);
+            dialog.SetOptions((FILEOPENDIALOGOPTIONS)options | FILEOPENDIALOGOPTIONS.FOS_FORCEFILESYSTEM);
         }
 
         private void ReleaseDialog()

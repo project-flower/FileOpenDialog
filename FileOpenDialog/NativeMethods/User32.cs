@@ -1,6 +1,6 @@
 ﻿namespace NativeMethods
 {
-    public static partial class User32
+    internal static partial class User32
     {
         #region Public Fields
 

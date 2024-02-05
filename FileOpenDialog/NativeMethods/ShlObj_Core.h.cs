@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace NativeMethods
 {
-    public static class CSIDL
+    internal static class CSIDL
     {
         /// <summary>&lt;desktop&gt;</summary>
         public const int DESKTOP = 0x0000;
@@ -60,7 +60,7 @@ namespace NativeMethods
         public const int PRINTHOOD = 0x001b;
     }
 
-    public static partial class Shell32
+    internal static partial class Shell32
     {
         #region Public Methods
 

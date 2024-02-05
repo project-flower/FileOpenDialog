@@ -24,7 +24,7 @@ namespace System.Windows.Forms
         }
 
         public SelectDirectoryDialog(bool reusable) :
-            base(NativeMethods.FILEOPENDIALOGOPTIONS.FOS_PICKFOLDERS, reusable)
+            base(FileOpenDialogOptions.PickFolders, reusable)
         {
         }
 

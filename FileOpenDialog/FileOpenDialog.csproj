@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileOpenDialog.cs" />
+    <Compile Include="FileOpenDialogOptions.cs" />
     <Compile Include="NativeMethods\Shell32.cs" />
     <Compile Include="NativeMethods\ShlObjIdl_Core.h.cs" />
     <Compile Include="NativeMethods\ShlObj_Core.h.cs" />

@@ -6,11 +6,11 @@ namespace NativeMethods
     #region Public Classes
 
     [ComImport, Guid("DC1C5A9C-E88A-4dde-A5A1-60F82A20AEF7")]
-    public class FileOpenDialog
+    internal class FileOpenDialog
     {
     }
 
-    public enum FILEOPENDIALOGOPTIONS : uint
+    internal enum FILEOPENDIALOGOPTIONS : uint
     {
         FOS_OVERWRITEPROMPT = 0x2,
         FOS_STRICTFILETYPES = 0x4,
@@ -38,7 +38,7 @@ namespace NativeMethods
     }
 
     [ComImport, Guid("d57c7288-d4ad-4768-be02-9d969532d960"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IFileOpenDialog
+    internal interface IFileOpenDialog
     {
         #region Overrided Methods from IModalWindow
 
@@ -80,7 +80,7 @@ namespace NativeMethods
     }
 
     [ComImport, Guid("43826d1e-e718-42ee-bc55-a1e261c37bfe"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IShellItem
+    internal interface IShellItem
     {
         void BindToHandler();
         void GetParent();
@@ -89,7 +89,7 @@ namespace NativeMethods
         void Compare();
     }
 
-    public enum SIGDN : uint
+    internal enum SIGDN : uint
     {
         SIGDN_NORMALDISPLAY = 0,
         SIGDN_PARENTRELATIVEPARSING = 0x80018001,

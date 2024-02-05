@@ -1,6 +1,6 @@
 ﻿namespace NativeMethods
 {
-    public static partial class Shell32
+    internal static partial class Shell32
     {
         #region Public Fields
 

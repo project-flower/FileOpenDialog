@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\FileOpenDialog\FileOpenDialog.cs">
-      <Link>FileOpenDialog.cs</Link>
-    </Compile>
-    <Compile Include="..\FileOpenDialog\SelectDirectoryDialog.cs">
-      <Link>SelectDirectoryDialog.cs</Link>
-    </Compile>
     <Compile Include="..\FileOpenDialog\NativeMethods\Shell32.cs">
       <Link>NativeMethods\Shell32.cs</Link>
     </Compile>
@@ -99,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileOpenDialog\FileOpenDialog.csproj">
+      <Project>{6825b2fb-fc0b-44ae-a34b-b0a024b285ba}</Project>
+      <Name>FileOpenDialog</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
